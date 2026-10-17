@@ -1,4 +1,3 @@
-
 // Reglas de negocio (única fuente de verdad en el servidor).
 // Las fechas son strings 'YYYY-MM-DD'.
 
@@ -23,3 +22,12 @@ export function cargoExtra(diasRetraso, tipo, recargoUnitario) {
   const unidades = tipo === 'semana' ? Math.ceil(diasRetraso / 7) : diasRetraso;
   return round2(unidades * recargoUnitario);
 }
+
+export function hoy() {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${mm}-${dd}`;
+}
+
+export const round2 = (n) => Math.round(n * 100) / 100;
